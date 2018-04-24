@@ -375,7 +375,7 @@ public class Camera2BasicFragment extends Fragment
                             "Loading. Please wait...", true);
                     dialog.show(); */
                     counterTest++;
-                    if(counterTest >5) {
+                    if(counterTest >1) {
                         counterTest = 0;
                         Bitmap b = mTextureView.getBitmap(mTextureView.getWidth()/2,mTextureView.getHeight()/2);
                         int[] lightPosHolder;
@@ -477,6 +477,33 @@ public class Camera2BasicFragment extends Fragment
                 @Override
                 public void run() {
                     Toast.makeText(activity, text, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+    private void showMsgBox( final String text) {
+        final Activity activity = getActivity();
+        if (activity != null) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(activity, text, Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
+                    dlgAlert.setMessage(text);
+                    dlgAlert.setTitle("Message:");
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    dlgAlert.setCancelable(true);
+                    try {
+                        dlgAlert.create().show();
+                    }catch (Exception e) {
+                        Toast.makeText(activity, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
         }
@@ -1042,7 +1069,9 @@ public class Camera2BasicFragment extends Fragment
             n[i] = encode.getMsgListKamera().get(i).intValue();
         }
         String text = mt.morseToText(n);
-        showToast(text);
+
+        // zeigt die Box an!
+        showMsgBox(text);
     }
     public void startScan() {
         //playButton.setImageResource(R.drawable.ic_pause_circle_outline_black_24dp);

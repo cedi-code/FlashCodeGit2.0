@@ -24,14 +24,14 @@ public class MorseMessage {
         try{
             main.turnOnFlashLight();
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2000); // 2000
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             main.turnOffFlashLight();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1000); // 1000
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -42,14 +42,14 @@ public class MorseMessage {
                     if (code == '.') {
                         main.turnOnFlashLight();
                         try {
-                            Thread.sleep(70);
+                            Thread.sleep(70); // 70
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                         main.turnOffFlashLight();
                         try {
-                            Thread.sleep(140);
+                            Thread.sleep(140); // 140
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -57,14 +57,14 @@ public class MorseMessage {
                     } else if (code == '-') {
                         main.turnOnFlashLight();
                         try {
-                            Thread.sleep(400);
+                            Thread.sleep(400); // 400
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                         main.turnOffFlashLight();
                         try {
-                            Thread.sleep(140);
+                            Thread.sleep(140); // 140
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();

@@ -17,5 +17,16 @@
         <item name="colorAccent">@color/active</item>
     </style>
 
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:color">@color/active</item>
+        <item name="android:colorAccent">@color/active</item>
+        <item name="android:textColor">@color/active</item>
+        <item name="android:colorForeground">@color/active</item>
+        <item name="android:textColorAlertDialogListItem">@color/active</item>
+        <item name="android:textColorPrimary">@color/active</item>
+        <item name="android:textAppearanceMedium">@color/active</item>
+    </style>
+
 
 </resources>
