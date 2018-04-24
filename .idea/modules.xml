@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://D:\5_daten\MorseCode\Project\FlashCodeGit\FlashCodeGit.iml" filepath="D:\5_daten\MorseCode\Project\FlashCodeGit\FlashCodeGit.iml" />
+      <module fileurl="file://D:\5_daten\FlashCodeGit\FlashCodeGit.iml" filepath="D:\5_daten\FlashCodeGit\FlashCodeGit.iml" />
+      <module fileurl="file://D:\5_daten\FlashCodeGit-6738ffb19385cf14bf5d3b406a5e591a23e4f4dd\FlashCodeGit.iml" filepath="D:\5_daten\FlashCodeGit-6738ffb19385cf14bf5d3b406a5e591a23e4f4dd\FlashCodeGit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlashCodeGit-6738ffb19385cf14bf5d3b406a5e591a23e4f4dd.iml" filepath="$PROJECT_DIR$/FlashCodeGit-6738ffb19385cf14bf5d3b406a5e591a23e4f4dd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\5_daten\FlashCodeGit-6738ffb19385cf14bf5d3b406a5e591a23e4f4dd\app\app.iml" filepath="D:\5_daten\FlashCodeGit-6738ffb19385cf14bf5d3b406a5e591a23e4f4dd\app\app.iml" />
+      <module fileurl="file://D:\5_daten\MorseCode\Project\FlashCodeGit\app\app.iml" filepath="D:\5_daten\MorseCode\Project\FlashCodeGit\app\app.iml" />
+      <module fileurl="file://D:\5_daten\FlashCodeGit\app\app.iml" filepath="D:\5_daten\FlashCodeGit\app\app.iml" />
+    </modules>
+  </component>
+</project>

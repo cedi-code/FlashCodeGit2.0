@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FlashCode</string>
+    <string name="title_transmitter">Transmit</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_receiver">Receive</string>
+
+
+    <string name="picture">Picture</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+</resources>
