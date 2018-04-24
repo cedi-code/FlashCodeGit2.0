@@ -99,10 +99,11 @@ public class encodeFootage {
     }
 
     public  int[] scanLightPoint(Bitmap b) {
-        int punktX = hellsterPunktX;
-        int punktY = hellsterPunktY;
+        // TODO es scanned nun in der Mitte
+        int punktX = b.getWidth()/2;
+        int punktY = b.getHeight()/2;
         int height = b.getHeight();
-        int width = b.getWidth();
+        int width =  b.getWidth();
         int hits = 0;
 
         int[] data = new int[width * height];
@@ -139,8 +140,13 @@ public class encodeFootage {
         Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
         p.setColor(color);
         p.setStyle(Paint.Style.STROKE);
-        p.setStrokeWidth(10f);
+        p.setStrokeWidth(5f);
+        Paint pp = new Paint(Paint.ANTI_ALIAS_FLAG);
+        pp.setColor(Color.GRAY);
+        pp.setStyle(Paint.Style.STROKE);
+        pp.setStrokeWidth(10f);
         canvas.drawCircle(posX, posY, 30, p);
+        canvas.drawCircle(width/2, height/2, 50, pp);
         return bmp;
     }
 

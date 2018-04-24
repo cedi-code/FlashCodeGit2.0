@@ -20,6 +20,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -370,15 +371,20 @@ public class Camera2BasicFragment extends Fragment
                 case STATE_PREVIEW: {
                     // We have nothing to do when the camera preview is working normally.
                     // TODO get current Frame?
+                    /* ProgressDialog dialog = ProgressDialog.show(getActivity(), "",
+                            "Loading. Please wait...", true);
+                    dialog.show(); */
                     counterTest++;
-                    if(counterTest >10) {
+                    if(counterTest >5) {
                         counterTest = 0;
                         Bitmap b = mTextureView.getBitmap(mTextureView.getWidth()/2,mTextureView.getHeight()/2);
                         int[] lightPosHolder;
                         if(isPlaying) {
+
                              lightPosHolder = encode.scanLightPoint(b);
                         }else {
-                            lightPosHolder = new int[] {mTextureView.getWidth()/4, mTextureView.getHeight()/4};
+                            lightPosHolder = encode.getLightPoints(b);
+                            //lightPosHolder = new int[] {b.getWidth()/2, b.getHeight()/2};
                         }
                         // encode.enhanceImage(b,1,-50f)
                         final int[] lightPos = lightPosHolder;
