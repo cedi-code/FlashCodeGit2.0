@@ -378,7 +378,7 @@ public class Camera2BasicFragment extends Fragment
                         if(isPlaying) {
                              lightPosHolder = encode.scanLightPoint(b);
                         }else {
-                            lightPosHolder = encode.getLightPoints(b);
+                            lightPosHolder = new int[] {mTextureView.getWidth()/4, mTextureView.getHeight()/4};
                         }
                         // encode.enhanceImage(b,1,-50f)
                         final int[] lightPos = lightPosHolder;
