@@ -42,14 +42,14 @@ public class MorseMessage {
                     if (code == '.') {
                         main.turnOnFlashLight();
                         try {
-                            Thread.sleep(50);
+                            Thread.sleep(70);
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                         main.turnOffFlashLight();
                         try {
-                            Thread.sleep(100);
+                            Thread.sleep(140);
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -64,7 +64,7 @@ public class MorseMessage {
                         }
                         main.turnOffFlashLight();
                         try {
-                            Thread.sleep(100);
+                            Thread.sleep(140);
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -76,7 +76,7 @@ public class MorseMessage {
                 e.printStackTrace();
             }
             try {
-                Thread.sleep(400); //Wartezeit zwischen einzelnen Buchstaben
+                Thread.sleep(500); //Wartezeit zwischen einzelnen Buchstaben
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
