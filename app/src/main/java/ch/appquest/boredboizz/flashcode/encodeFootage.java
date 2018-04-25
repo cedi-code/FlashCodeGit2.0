@@ -34,6 +34,11 @@ public class encodeFootage {
     }
 
     private ArrayList<Integer> msgListKamera = new ArrayList<>();
+
+    public void resetMsgListKamera() {
+        this.msgListKamera.clear();
+    }
+
     // fürs Testing
     public void saveToInternalStorage(Bitmap bitmapImage,File savePath,String id){
 

@@ -1072,6 +1072,9 @@ public class Camera2BasicFragment extends Fragment
 
         // zeigt die Box an!
         showMsgBox(text);
+        text = "";
+        n = null;
+        encode.resetMsgListKamera();
     }
     public void startScan() {
         //playButton.setImageResource(R.drawable.ic_pause_circle_outline_black_24dp);
