@@ -148,7 +148,8 @@ public class MorseTranslater {
     }
 
     public String[] textToMorse(String text) {
-        String[] morse = new String[40];
+        String[] morse = new String[text.length()];
+
 
         for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);

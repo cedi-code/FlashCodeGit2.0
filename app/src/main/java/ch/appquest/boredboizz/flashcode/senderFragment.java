@@ -106,9 +106,9 @@ public class senderFragment extends Fragment {
 
             scrollDown(false);
         }else {
-            /*if(cameraReceive.getIsPlaying()){
-                cameraReceive.stopPlay();
-            }*/
+            if(camera2Basic.getIsPlaying()) {
+                camera2Basic.stopScan();
+            }
 
             scrollDown(true);
         }

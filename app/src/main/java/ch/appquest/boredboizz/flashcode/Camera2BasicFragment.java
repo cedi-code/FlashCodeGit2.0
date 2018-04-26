@@ -142,6 +142,9 @@ public class Camera2BasicFragment extends Fragment
     private static final int MAX_PREVIEW_HEIGHT = 1080;
 
     private boolean isPlaying = false;
+    public boolean getIsPlaying() {
+        return isPlaying;
+    }
     private ImageButton playButton;
     private ImageView lightPoints;
 
@@ -314,51 +317,6 @@ public class Camera2BasicFragment extends Fragment
 
     private int counterTest = 0;
     private encodeFootage encode;
-    private File mVideoFolder;
-    private String mVideoFileName;
-    // TODO: entfernen nach Testing!
-    private void createVideoFolder() {
-        File movieFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
-        mVideoFolder = new File(movieFolder, "FlashCodeTests");
-        if(!mVideoFolder.exists()){
-            mVideoFolder.mkdirs();
-        }
-    }
-    // TODO: entfernen nach Testing!
-    private File createVideoFileName() throws IOException {
-        String timestamp = new SimpleDateFormat("yyyy.MM.dd_HH:mm:ss").format(new Date());
-        String prepend = "FlashCodeTest_" + timestamp + "_";
-        File videoFile = File.createTempFile(prepend, ".mp4", mVideoFolder);
-        mVideoFileName = videoFile.getAbsolutePath();
-        return videoFile;
-    }
-    // TODO: entfernen nach Testing!
-    private void checkWriteStoragePermission(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if(ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                try
-                {
-                    createVideoFileName();
-                }catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }else {
-                if(shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                    Toast.makeText(getActivity().getApplicationContext(), "testing needs storage Permission", Toast.LENGTH_SHORT).show();
-                }
-                // anders gmacht mit em  1 !!
-                requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},1 );
-            }
-        }else {
-            try
-            {
-                createVideoFileName();
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
 
     /**
      * A {@link CameraCaptureSession.CaptureCallback} that handles events related to JPEG capture.
@@ -369,11 +327,7 @@ public class Camera2BasicFragment extends Fragment
         private void process(CaptureResult result) {
             switch (mState) {
                 case STATE_PREVIEW: {
-                    // We have nothing to do when the camera preview is working normally.
-                    // TODO get current Frame?
-                    /* ProgressDialog dialog = ProgressDialog.show(getActivity(), "",
-                            "Loading. Please wait...", true);
-                    dialog.show(); */
+
                     counterTest++;
                     if(counterTest >1) {
                         counterTest = 0;
@@ -402,7 +356,6 @@ public class Camera2BasicFragment extends Fragment
                                 }
                             });
                         }
-                        //encode.saveToInternalStorage(b,mVideoFolder, Integer.toString(counterTest));
 
                     }
 
@@ -487,7 +440,6 @@ public class Camera2BasicFragment extends Fragment
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(activity, text, Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
                     dlgAlert.setMessage(text);
                     dlgAlert.setTitle("Message:");
@@ -574,14 +526,10 @@ public class Camera2BasicFragment extends Fragment
         // view.findViewById(R.id.picture).setOnClickListener(this);
         //view.findViewById(R.id.info).setOnClickListener(this);
         encode = new encodeFootage();
-        createVideoFolder();
         playButton = (ImageButton) view.findViewById(R.id.playButton);
         playButton.setOnClickListener(onClickPlay);
         lightPoints = (ImageView) view.findViewById(R.id.lightPointers);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
-        // TODO enfernen für Testing
-        checkWriteStoragePermission();
-         // see other conf types
 
     }
 

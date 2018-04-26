@@ -47,10 +47,10 @@ public class TouchFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View myFragmentView = inflater.inflate(R.layout.touch_receive, container, false);
         // initzialisiert die Objekte im Fragment mit onklicks
-        init(myFragmentView);
+
         return myFragmentView;
     }
-    private void init(View v) {
+    /*private void init(View v) {
         switchButton = (Button) v.findViewById(R.id.touchButton);
         texview = (AutoCompleteTextView) v.findViewById(R.id.textResult);
         texview.setEnabled(false);
@@ -113,6 +113,6 @@ public class TouchFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-    }
+    }*/
 
 }

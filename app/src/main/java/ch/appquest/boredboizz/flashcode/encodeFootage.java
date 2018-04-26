@@ -39,31 +39,6 @@ public class encodeFootage {
         this.msgListKamera.clear();
     }
 
-    // fürs Testing
-    public void saveToInternalStorage(Bitmap bitmapImage,File savePath,String id){
-
-        // path to /data/data/yourapp/app_data/imageDir
-        // Create imageDir
-        String timestamp = new SimpleDateFormat("yyyy.MM.dd_HH:mm:ss").format(new Date());
-        File mypath=new File(savePath,"frameTest" + id +"_" +timestamp+ ".jpg");
-
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(mypath);
-            // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-    // TODO besserer Algoritmus! brightness Berechnung funktioniert immer noch mit kombination von Hellsterpunkt!
     public int[] getLightPoints(Bitmap bitmap) {
         int height = bitmap.getHeight();
         int width = bitmap.getWidth();
@@ -172,40 +147,8 @@ public class encodeFootage {
         return bm;
     }
 
-    public int calculateBrightnessEstimate(android.graphics.Bitmap bitmap, int pixelSpacing) {
-        int R = 0; int G = 0; int B = 0;
-        int height = bitmap.getHeight();
-        int width = bitmap.getWidth();
-        int n = 0;
-        int[] pixels = new int[width * height];
-        bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
-        for (int i = 0; i < pixels.length; i += pixelSpacing) {
-            int color = pixels[i];
-            R += Color.red(color);
-            G += Color.green(color);
-            B += Color.blue(color);
-            n++;
-        }
-        return (R + B + G) / (n * 3);
-    }
 
 
-    public static Bitmap enhanceImage(Bitmap mBitmap, float contrast, float brightness) {
-        ColorMatrix cm = new ColorMatrix(new float[]
-                {
-                        contrast, 0, 0, 0, brightness,
-                        0, contrast, 0, 0, brightness,
-                        0, 0, contrast, 0, brightness,
-                        0, 0, 0, 1, 0
-                });
-        Bitmap mEnhancedBitmap = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), mBitmap
-                .getConfig());
-        Canvas canvas = new Canvas(mEnhancedBitmap);
-        Paint paint = new Paint();
-        paint.setColorFilter(new ColorMatrixColorFilter(cm));
-        canvas.drawBitmap(mBitmap, 0, 0, paint);
-        return mEnhancedBitmap;
-    }
 
 
 

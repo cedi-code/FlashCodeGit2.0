@@ -3,6 +3,7 @@ package ch.appquest.boredboizz.flashcode;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         // seztz das activity_main layout als main an
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // erstellt das Fragment und Plaziert sie auf den Content tag
         transmit = new senderFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.content, transmit).commit();
@@ -87,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
-    // TODO ihr bekommst du die eingetipte nachricht Default: null
     public String getMessage() {
         return this.message;
     }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         this.message = message;
     }
 
-    // TODO wenn du die Methode aufrufst geht das Flash licht an (es geht erst wieder aus wenn die turnOffFlashLight() Methode aufgerufen wird)
+
     public void turnOnFlashLight() {
 
         try {
@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // TODO wenn du die Methode aufrufst geht das Flash licht aus (es geht erst wieder an wenn die turnOnFlashLight() Methode aufgerufen wird)
     public void turnOffFlashLight() {
 
         try {
