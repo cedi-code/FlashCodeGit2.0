@@ -1,10 +1,16 @@
 package ch.appquest.boredboizz.flashcode;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.SurfaceTexture;
+import android.hardware.Camera;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraMetadata;
+import android.hardware.camera2.CaptureRequest;
 import android.os.Build;
 import android.os.Bundle;
 import android.hardware.camera2.CameraAccessException;
@@ -29,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     // für auf die Kamera zu zugreifen
     private String mCameraId;
     private CameraManager mCameraManager;
-
+    private CaptureRequest.Builder mBuilder;
     private senderFragment transmit;
 
 
@@ -44,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         // erstellt das Fragment und Plaziert sie auf den Content tag
         transmit = new senderFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.content, transmit).commit();
+
+
+        // TODO flashlight für marcel ????
+        if(Build.VERSION_CODES.LOLLIPOP == Build.VERSION.SDK_INT) {
+            mBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AF_MODE_AUTO);
+            mBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_TORCH);
+        }
+
+
 
         // initzialisiert die BottomNavigation inklusive den Click event.
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -97,28 +112,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // TODO für marcel
     public void turnOnFlashLight() {
 
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mCameraManager.setTorchMode(mCameraId, true);
+
+            }else {
+                // hiä für lolipop
+                mBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_TORCH);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    // TODO für marcel
     public void turnOffFlashLight() {
 
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mCameraManager.setTorchMode(mCameraId, false);
+            }else {
+                // hiä für lolipop
+                mBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_OFF);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     // überpüft ob das Handy eine Kamera hat falls nicht kommt ein Popup mit einer nachricht und das Programm wird beendet.
     private void checkValidety() {

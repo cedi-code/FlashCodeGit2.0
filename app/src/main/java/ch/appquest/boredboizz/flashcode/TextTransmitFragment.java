@@ -1,10 +1,13 @@
 package ch.appquest.boredboizz.flashcode;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,9 +18,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.concurrent.Semaphore;
+
 public class TextTransmitFragment extends Fragment{
     private EditText mEdit;
     private Button send;
+
 
     // Text tab Fragment wo die Textbox und der Send Button ist
     @Override
@@ -36,7 +42,7 @@ public class TextTransmitFragment extends Fragment{
         // holst sich die Objekte vom XML und speichert diese in die Variabeln
         send = (Button) v.findViewById(R.id.send);
         mEdit = (EditText) v.findViewById(R.id.editText);
-
+        // ProgressDialog pDialog = ProgressDialog.show(getActivity(), "MY Dialog", "Please wait...");
         // holst sich die MainActivity klasse
         final MainActivity main = (MainActivity) getActivity();
         // Mit diesem Onklick auf dem sender Button wird der Eingegebene Text in der message Attribut der MainActivity gespeichert
@@ -44,15 +50,23 @@ public class TextTransmitFragment extends Fragment{
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // i weiss es isch chli nes gagi if
                         if(!mEdit.getText().toString().equals("")) {
-                            String nachricht = mEdit.getText().toString().toLowerCase();
+                            final String nachricht = mEdit.getText().toString().toLowerCase();
                             if(nachricht.length() > 40) {
                                 Toast.makeText(main.getApplicationContext(),"Ihre Eingabe ist zu Lang", Toast.LENGTH_SHORT).show();
                             }else {
+
+                                // TODO dies zeigt eine Loading popup an!
+                                ProgressDialog dialog = new ProgressDialog(main);
+                                dialog.show();
+
+                                // TODO ab hier wird der Morse code übersetzt? flo züg..
                                 MorseMessage mm = new MorseMessage(main);
                                 MorseTranslater mt = new MorseTranslater();
                                 String[] morseCode = mt.textToMorse(nachricht);
                                 mm.transmitMorse(morseCode); //Hier werden die MorseSignale gesendet
+
                             }
 
                         }else {
@@ -65,4 +79,5 @@ public class TextTransmitFragment extends Fragment{
                 }
         );
     }
+
 }
